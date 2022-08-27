@@ -132,14 +132,41 @@ function compute({ lat, long }: iCoord) {
 
 // connect('default');
 
-const connection = {
-  host: 'localhost',
-  protocol: 'https' as 'https',
-};
+// const connection = {
+//   host: 'localhost',
+//   protocol: 'https' as 'https',
+// };
 
-function connect(host: string, protocol: 'https' | 'http') {}
+// function connect(host: string, protocol: 'https' | 'http') {}
 
-connect(connection.host, connection.protocol);
+// connect(connection.host, connection.protocol);
 
-const a: any = 5;
-let c: number = a as number;
+// const a: any = 5;
+// let c: number = a as number;
+
+enum Direction {
+  Left,
+  Right,
+}
+
+function moveDog(direction: Direction): -1 | 1 | 0 {
+  switch (direction) {
+    case Direction.Left:
+      return -1;
+    case Direction.Right:
+      return 1;
+    default:
+      return 0;
+  }
+}
+
+function objMod(obj: { Left: number }) {}
+
+objMod(Direction);
+
+const enum Direction2 {
+  Up,
+  Down,
+}
+
+let myDirection = Direction2.Up;
