@@ -30,21 +30,76 @@
 //   return coord.lat;
 // }
 
-let universalId: string | number = 5;
-universalId = 'sddsf';
+// let universalId: string | number = 5;
+// universalId = 'sddsf';
 
-function printID(id: number | string) {
-  if (typeof id === 'string') {
-    console.log(id.toUpperCase());
-  } else {
-    console.log(id);
-  }
+// function printID(id: number | string) {
+//   if (typeof id === 'string') {
+//     console.log(id.toUpperCase());
+//   } else {
+//     console.log(id);
+//   }
+// }
+
+// function helloUser(user: string | string[]) {
+//   if (Array.isArray(user)) {
+//     console.log(user.join(', ') + 'Hello');
+//   } else {
+//     console.log(user + 'Hi!');
+//   }
+// }
+
+type coordProps = {
+  lat: number;
+  long: number;
+};
+
+interface iCoord {
+  lat: number;
+  long: number;
 }
 
-function helloUser(user: string | string[]) {
-  if (Array.isArray(user)) {
-    console.log(user.join(', ') + 'Hello');
-  } else {
-    console.log(user + 'Hi!');
-  }
+type ID = number | string;
+
+function compute({ lat, long }: iCoord) {
+  return lat * long;
 }
+
+// interface Animal {
+//   name: string;
+// }
+
+// interface Dog extends Animal {
+//   tail?: boolean;
+// }
+
+// const dog: Dog = {
+//   name: 'sdf',
+//   tail: true,
+// };
+
+// type Animal = {
+//   name: string;
+// };
+
+// type Dog = Animal & {
+//   tail: boolean;
+// };
+
+// const dog: Dog = {
+//   name: 'sdf',
+//   tail: true,
+// };
+
+interface Dog {
+  name: string;
+}
+
+interface Dog {
+  tail: boolean;
+}
+
+const dog: Dog = {
+  name: 'boss',
+  tail: true,
+};
