@@ -191,109 +191,144 @@ function compute({ lat, long }: iCoord) {
 
 // function bid<T>(sum: T) {}
 
-class Coord {
-  lat: number;
-  long: number;
+// class Coord {
+//   lat: number;
+//   long: number;
 
-  protected test() {
-    if (this.lat > 0) {
-      console.log(this.lat);
-    }
-  }
+//   protected test() {
+//     if (this.lat > 0) {
+//       console.log(this.lat);
+//     }
+//   }
 
-  computeDistance(newLat: number, newLong: number): number {
-    return 0;
-  }
+//   computeDistance(newLat: number, newLong: number): number {
+//     return 0;
+//   }
 
-  constructor(lat: number, long: number) {
-    this.lat = lat;
-    this.long = long;
-  }
-}
+//   constructor(lat: number, long: number) {
+//     this.lat = lat;
+//     this.long = long;
+//   }
+// }
 
-const point = new Coord(12, 123);
+// const point = new Coord(12, 123);
 
-class MapLocation extends Coord {
-  private _name: string;
+// class MapLocation extends Coord {
+//   private _name: string;
 
-  get name() {
-    return this._name;
-  }
+//   get name() {
+//     return this._name;
+//   }
 
-  set name(s: string) {
-    this._name = s[0].toUpperCase() + s.substring(1);
-  }
+//   set name(s: string) {
+//     this._name = s[0].toUpperCase() + s.substring(1);
+//   }
 
-  override computeDistance(newLat: number, newLong: number): number {
-    console.log(this._name);
-    this.test();
-    return 1;
-  }
+//   override computeDistance(newLat: number, newLong: number): number {
+//     console.log(this._name);
+//     this.test();
+//     return 1;
+//   }
 
-  constructor(lat: number, long: number, name: string) {
-    super(lat, long);
-    this._name = name;
-  }
-}
+//   constructor(lat: number, long: number, name: string) {
+//     super(lat, long);
+//     this._name = name;
+//   }
+// }
 
-const loc = new MapLocation(1, 3, 'lac');
+// const loc = new MapLocation(1, 3, 'lac');
 
-interface LoggerService {
-  log: (s: string) => void;
-}
+// interface LoggerService {
+//   log: (s: string) => void;
+// }
 
-class Logger implements LoggerService {
-  public log(s: string) {
-    console.log(s);
-  }
+// class Logger implements LoggerService {
+//   public log(s: string) {
+//     console.log(s);
+//   }
 
-  private error() {}
+//   private error() {}
 
-  public a = '';
-}
+//   public a = '';
+// }
 
-const i = new Logger();
+// const i = new Logger();
 
-i.log('f');
+// i.log('f');
 
-class MyClass {
-  static a = '1';
-}
+// class MyClass {
+//   static a = '1';
+// }
 
-MyClass.a;
+// MyClass.a;
 
-class MyClassTwo<T> {
-  a: T;
-}
+// class MyClassTwo<T> {
+//   a: T;
+// }
 
-const b = new MyClassTwo<string>();
-b.a;
+// const b = new MyClassTwo<string>();
+// b.a;
 
-abstract class Base {
-  print(s: string) {
-    console.log(s);
-  }
+// abstract class Base {
+//   print(s: string) {
+//     console.log(s);
+//   }
 
-  abstract error(s: string): void;
-}
+//   abstract error(s: string): void;
+// }
 
-class BaseExtended extends Base {
-  error(s: string) {
-    console.log('Error' + s);
-  }
-}
+// class BaseExtended extends Base {
+//   error(s: string) {
+//     console.log('Error' + s);
+//   }
+// }
 
-const base = new BaseExtended();
+// const base = new BaseExtended();
 
-base.print('Base');
+// base.print('Base');
 
-class Animal {
-  name: string;
-}
+// class Animal {
+//   name: string;
+// }
 
-class Dog {
-  name: string;
-  tail: boolean;
-}
+// class Dog {
+//   name: string;
+//   tail: boolean;
+// }
 
-const puppy: Animal = new Dog();
+// const puppy: Animal = new Dog();
+
+// let a = 'Hello!';
+
+// if (typeof a === 'string') {
+// }
+
+// let c: typeof a;
+
+// type Coord = {
+//   lat: number;
+//   long: number;
+// };
+
+// type P = keyof Coord;
+
+// let a: P = 'long';
+
+// function log(a: string | null) {
+//   return a?.toLowerCase();
+// }
+
+// function log1(a: string | null) {
+//   if (a === null) {
+//     return 'nothing';
+//   } else {
+//     return a.toLowerCase();
+//   }
+// }
+
+// function log3(a: string | null) {
+//   return a!.toLowerCase();
+// }
+
+const a: bigint = BigInt(100);
+const b: symbol = Symbol('sddsds');
