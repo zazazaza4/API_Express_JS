@@ -144,29 +144,49 @@ function compute({ lat, long }: iCoord) {
 // const a: any = 5;
 // let c: number = a as number;
 
-enum Direction {
-  Left,
-  Right,
+// enum Direction {
+//   Left,
+//   Right,
+// }
+
+// function moveDog(direction: Direction): -1 | 1 | 0 {
+//   switch (direction) {
+//     case Direction.Left:
+//       return -1;
+//     case Direction.Right:
+//       return 1;
+//     default:
+//       return 0;
+//   }
+// }
+
+// function objMod(obj: { Left: number }) {}
+
+// objMod(Direction);
+
+// const enum Direction2 {
+//   Up,
+//   Down,
+// }
+
+// let myDirection = Direction2.Up;
+
+interface HasLength {
+  length: number;
 }
 
-function moveDog(direction: Direction): -1 | 1 | 0 {
-  switch (direction) {
-    case Direction.Left:
-      return -1;
-    case Direction.Right:
-      return 1;
-    default:
-      return 0;
-  }
+function log<T extends HasLength, K>(params: T, arr: K[]): K[] {
+  console.log(arr.length);
+  return arr;
 }
 
-function objMod(obj: { Left: number }) {}
+log<string, number>('sid', [32, 23, 2, 3, 23]);
+log<HasLength, string>({ length: 21 }, ['ada']);
 
-objMod(Direction);
-
-const enum Direction2 {
-  Up,
-  Down,
+interface IUser {
+  name: string;
+  age?: number;
+  bid: <T>(sum: T) => void;
 }
 
-let myDirection = Direction2.Up;
+function bid<T>(sum: T) {}
