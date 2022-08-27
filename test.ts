@@ -91,15 +91,55 @@ function compute({ lat, long }: iCoord) {
 //   tail: true,
 // };
 
-interface Dog {
-  name: string;
-}
+// interface Dog {
+//   name: string;
+// }
 
-interface Dog {
-  tail: boolean;
-}
+// interface Dog {
+//   tail: boolean;
+// }
 
-const dog: Dog = {
-  name: 'boss',
-  tail: true,
+// const dog: Dog = {
+//   name: 'boss',
+//   tail: true,
+// };
+
+// const a = 'sddfdsf';
+
+// let b: 'hi' = 'hi';
+
+// type direction = 'left' | 'right';
+
+// function moveDog(direction: direction): -1 | 1 | 0 {
+//   switch (direction) {
+//     case 'left':
+//       return -1;
+//     case 'right':
+//       return 1;
+//     default:
+//       return 0;
+//   }
+// }
+
+// moveDog('left');
+
+// interface IConnection {
+//   host: string;
+//   port: number;
+// }
+
+// function connect(params: IConnection | 'default') {}
+
+// connect('default');
+
+const connection = {
+  host: 'localhost',
+  protocol: 'https' as 'https',
 };
+
+function connect(host: string, protocol: 'https' | 'http') {}
+
+connect(connection.host, connection.protocol);
+
+const a: any = 5;
+let c: number = a as number;
