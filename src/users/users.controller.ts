@@ -5,22 +5,23 @@ import { inject, injectable } from 'inversify';
 import { TYPES } from '../types';
 import { ILogger } from '../logger/logger.interface';
 import 'reflect-metadata';
+import { IUserController } from './user.controller.interface';
 
 @injectable()
-export class UserController extends BaseController {
-  constructor(@inject(TYPES.ILogger) private loggerService: ILogger) {
-    super(loggerService);
+export class UserController extends BaseController implements IUserController {
+	constructor(@inject(TYPES.ILogger) private loggerService: ILogger) {
+		super(loggerService);
 
-    this.bindRoutes([
-      { path: '/register', func: this.register, method: 'post' },
-      { path: '/login', func: this.login, method: 'post' },
-    ]);
-  }
+		this.bindRoutes([
+			{ path: '/register', func: this.register, method: 'post' },
+			{ path: '/login', func: this.login, method: 'post' },
+		]);
+	}
 
-  login(req: Request, res: Response, next: NextFunction) {
-    next(new HTTPError(401, 'login error', 'login'));
-  }
-  register(req: Request, res: Response, next: NextFunction) {
-    this.ok(res, 'register');
-  }
+	login(req: Request, res: Response, next: NextFunction): void {
+		next(new HTTPError(401, 'login error', 'login'));
+	}
+	register(req: Request, res: Response, next: NextFunction): void {
+		this.ok(res, 'register');
+	}
 }
