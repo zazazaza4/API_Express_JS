@@ -3,17 +3,18 @@ import { LoggerService } from './logger/logger.service';
 import express, { Express } from 'express';
 import { Server } from 'http';
 import { UserController } from './users/users.controller';
+import { ILogger } from './logger/logger.interface';
 
 export class App {
   app: Express;
   server: Server;
   port: number;
-  logger: LoggerService;
+  logger: ILogger;
   userController: UserController;
   exeptionFilter: ExeptionFilter;
 
   constructor(
-    logger: LoggerService,
+    logger: ILogger,
     userController: UserController,
     exeptionFilter: ExeptionFilter
   ) {
