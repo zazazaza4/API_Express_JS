@@ -1,12 +1,14 @@
-import { ExeptionFilter } from './errors/exeption.filter';
 import express, { Express } from 'express';
 import { Server } from 'http';
-import { UserController } from './users/users.controller';
-import { ILogger } from './logger/logger.interface';
 import { inject, injectable } from 'inversify';
+import { ExeptionFilter } from './errors/exeption.filter';
 import { TYPES } from './types';
+import { ILogger } from './logger/logger.interface';
 import { json } from 'body-parser';
 import 'reflect-metadata';
+import { IConfigService } from './config/config.service.interface';
+import { UserController } from './users/users.controller';
+import { PrismaService } from './database/prisma.service';
 
 @injectable()
 export class App {
@@ -17,7 +19,9 @@ export class App {
 	constructor(
 		@inject(TYPES.ILogger) private logger: ILogger,
 		@inject(TYPES.UserController) private userController: UserController,
-		@inject(TYPES.IExeptionFilter) private exeptionFilter: ExeptionFilter,
+		@inject(TYPES.ExeptionFilter) private exeptionFilter: ExeptionFilter,
+		@inject(TYPES.ConfigService) private configService: IConfigService,
+		@inject(TYPES.PrismaService) private prismaService: PrismaService,
 	) {
 		this.app = express();
 		this.port = 8000;
@@ -42,6 +46,7 @@ export class App {
 		this.useMiddleware();
 		this.useRoutes();
 		this.useExeptionFilter();
+		await this.prismaService.connect();
 		this.server = this.app.listen(this.port);
 		this.logger.log(`Server started => http://localhost:${this.port}`);
 	}
